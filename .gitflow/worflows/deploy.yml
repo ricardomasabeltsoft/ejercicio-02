@@ -2,7 +2,6 @@ name: Mi Demo con React
 on: [push, workflow_dispatch]
 jobs:
   test:
-    
     runs-on: ubuntu-latest
     steps:
       - name: Obtener código
@@ -12,7 +11,7 @@ jobs:
         with:
           node-version: 18
       - name: Instalar Dependencias
-        run: npm ci
+        run: npm install
       - name: Ejecutar pruebas
         run: npm test
   deploy:
