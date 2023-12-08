@@ -1,0 +1,32 @@
+name: Mi Demo con React
+on: [push, workflow_dispatch]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Instalar Node.JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Instalar Dependencias
+        run: npm install
+      - name: Ejecutar pruebas
+        run: npm test
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Instalar Node.JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Instalar Dependencias
+        run: npm install
+      - name: Compilar el proyecto
+        run: npm run build
+      - name: Desplogar el artefacto
+        run: echo "Desplegando..."

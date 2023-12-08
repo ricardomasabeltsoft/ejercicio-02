@@ -1,0 +1,10 @@
+name: Información de Salida
+on: issues
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar contexto de GitHub
+        run: echo "${{ toJSON(github) }}"
+      - name: Mostrar detalles del Job
+        run: echo "${{ toJSON(job) }}"
